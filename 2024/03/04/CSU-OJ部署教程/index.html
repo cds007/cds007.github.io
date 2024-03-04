@@ -1,0 +1,333 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>CSU-OJ部署教程 | CDS007的个人博客</title><meta name="author" content="cds007"><meta name="copyright" content="cds007"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="有点突发奇想，又有点心血来潮，想把之前做的CSU-OJ系统部署到服务器上，于是乎写下了这篇教程。 1.服务器购买我是在腾讯云上购买的服务器，本来还在想这个2h4g的服务器也太贵了吧，一个月就要100米，然后群里有个老哥说可以买幻兽帕鲁的服务器，2h16g，一个月只要32，我直接说老哥你真牛，这波羊毛被你薅到了。于是我买了一个月的幻兽帕鲁的服务器，然后改装了一下。服务器购买地址：服务器 2.服务器初">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSU-OJ部署教程">
+<meta property="og:url" content="https://cds007.github.io/2024/03/04/CSU-OJ%E9%83%A8%E7%BD%B2%E6%95%99%E7%A8%8B/index.html">
+<meta property="og:site_name" content="CDS007的个人博客">
+<meta property="og:description" content="有点突发奇想，又有点心血来潮，想把之前做的CSU-OJ系统部署到服务器上，于是乎写下了这篇教程。 1.服务器购买我是在腾讯云上购买的服务器，本来还在想这个2h4g的服务器也太贵了吧，一个月就要100米，然后群里有个老哥说可以买幻兽帕鲁的服务器，2h16g，一个月只要32，我直接说老哥你真牛，这波羊毛被你薅到了。于是我买了一个月的幻兽帕鲁的服务器，然后改装了一下。服务器购买地址：服务器 2.服务器初">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:published_time" content="2024-03-04T15:35:31.000Z">
+<meta property="article:modified_time" content="2024-03-04T16:08:39.130Z">
+<meta property="article:author" content="cds007">
+<meta property="article:tag" content="部署 后端 OJ系统">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://cds007.github.io/2024/03/04/CSU-OJ%E9%83%A8%E7%BD%B2%E6%95%99%E7%A8%8B/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'CSU-OJ部署教程',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-03-05 00:08:39'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/zyoushuo/Blog@latest/hexo/css/loading_style_1.css" ><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/zyoushuo/Blog@latest/hexo/css/loading_style_2.css" ><!-- hexo injector head_end start --><link rel="stylesheet" href="https://unpkg.zhimg.com/hexo-butterfly-footer-beautify@1.0.0/lib/runtime.min.css" media="print" onload="this.media='all'"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body>
+    <div id='loader'>
+        
+            <div class="outer_box">
+                <div class='loader_overlay'></div>
+                <div class='loader_cogs'>
+                    <div class='loader_cogs__top'>
+                        <div class='top_part'></div>
+                        <div class='top_part'></div>
+                        <div class='top_part'></div>
+                        <div class='top_hole'></div>
+                    </div>
+                    <div class='loader_cogs__left'>
+                        <div class='left_part'></div>
+                        <div class='left_part'></div>
+                        <div class='left_part'></div>
+                        <div class='left_hole'></div>
+                    </div>
+                    <div class='loader_cogs__bottom'>
+                        <div class='bottom_part'></div>
+                        <div class='bottom_part'></div>
+                        <div class='bottom_part'></div>
+                        <div class='bottom_hole'></div>
+                    </div>
+                    <p style="text-align:center">&nbsp;&nbsp;&nbsp;loading...</p>
+                </div>
+            </div>
+        
+    </div>
+
+    <script>
+        var endLoading = function () {
+            document.body.style.overflow = 'auto';
+            document.getElementById('loader').classList.add("loading");
+        }
+        window.addEventListener('load',endLoading);
+    </script>
+
+
+<div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">2</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope"></i><span> 留言板</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background: linear-gradient(20deg, #0062be, #925696, #cc426e, #fb0347)"><nav id="nav"><span id="blog-info"><a href="/" title="CDS007的个人博客"><img class="site-icon" src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"/><span class="site-name">CDS007的个人博客</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope"></i><span> 留言板</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">CSU-OJ部署教程</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-03-04T15:35:31.000Z" title="发表于 2024-03-04 23:35:31">2024-03-04</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-03-04T16:08:39.130Z" title="更新于 2024-03-05 00:08:39">2024-03-05</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>5分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="CSU-OJ部署教程"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>有点突发奇想，又有点心血来潮，想把之前做的CSU-OJ系统部署到服务器上，于是乎写下了这篇教程。</p>
+<h2 id="1-服务器购买"><a href="#1-服务器购买" class="headerlink" title="1.服务器购买"></a>1.服务器购买</h2><p>我是在腾讯云上购买的服务器，本来还在想这个2h4g的服务器也太贵了吧，一个月就要100米，然后群里有个老哥说可以买幻兽帕鲁的服务器，2h16g，一个月只要32，我直接说老哥你真牛，这波羊毛被你薅到了。于是我买了一个月的幻兽帕鲁的服务器，然后改装了一下。<br>服务器购买地址：<a target="_blank" rel="noopener" href="https://curl.qcloud.com/loqNrwQ4">服务器</a><br><img src="/../images/csuoj-dev/%E4%BB%B7%E6%A0%BC%E6%88%AA%E5%9B%BE.png" alt="服务器价格" title="Markdown"></p>
+<h2 id="2-服务器初始化"><a href="#2-服务器初始化" class="headerlink" title="2.服务器初始化"></a>2.服务器初始化</h2><h3 id="2-1-重装系统"><a href="#2-1-重装系统" class="headerlink" title="2.1 重装系统"></a>2.1 重装系统</h3><p>首先进入控制台，在应用管理的界面找到重装系统，然后我们重装系统为 <strong>宝塔Linux面板  8.0.5 腾讯云专享版</strong> ，用宝塔主打一个方便快捷。<br>然后我们在防火墙处开放8888端口，为了安全起见，可以编辑我们的可访问ip为我们主机的ip地址。<br><img src="/../images/csuoj-dev/%E6%88%AA%E5%9B%BE2.png" alt="ip"></p>
+<h3 id="2-2-装配环境"><a href="#2-2-装配环境" class="headerlink" title="2.2 装配环境"></a>2.2 装配环境</h3><p>然后我们点击登录，在腾讯的命令行界面输入登入宝塔的命令（登录按钮旁边有命令），之后就可以进入宝塔界面了！<br><img src="/../images/csuoj-dev/%E6%88%AA%E5%9B%BE3.png" alt="界面"></p>
+<p>我们在跳出来的基本配置安装弹窗中选择LNNP即可。（下图为安装完之后）<br><img src="/../images/csuoj-dev/%E6%88%AA%E5%9B%BE4.png" alt="lnmp"></p>
+<p>顺便我们可以在面板设置-&gt;面板账户，面板密码界面把账号和密码修改一下。</p>
+<h2 id="3-部署规划"><a href="#3-部署规划" class="headerlink" title="3.部署规划"></a>3.部署规划</h2><p>可以想一下我们项目需要什么依赖，路径地址是什么。<br>前端：<a target="_blank" rel="noopener" href="http://ip/">http://ip</a></p>
+<p>后端：<a target="_blank" rel="noopener" href="http://ip/api">http://ip/api</a> 实际运行在8121端口，默认用nginx做转发（避免跨域问题的麻烦）。</p>
+<p>代码沙箱 <a target="_blank" rel="noopener" href="http://ip:8090/executeCode">http://ip:8090/executeCode</a> 运行在8080端口。</p>
+<p>nginx：80端口</p>
+<p>数据库：3306端口</p>
+<p>Redis：6379端口</p>
+<p>Java</p>
+<p>Maven</p>
+<h2 id="4-安装依赖"><a href="#4-安装依赖" class="headerlink" title="4.安装依赖"></a>4.安装依赖</h2><p>搜索Redis，直接安装7.2.4 stable版本。<br><img src="/../images/csuoj-dev/%E6%88%AA%E5%9B%BE5.png" alt="redis"></p>
+<h3 id="4-1-安装MySQL数据库"><a href="#4-1-安装MySQL数据库" class="headerlink" title="4.1 安装MySQL数据库"></a>4.1 安装MySQL数据库</h3><p>首先得先检查一下我们防火墙的端口，要把3306端口开放一下。</p>
+<p>然后在数据库界面添加一个新的数据库，添加完之后我们可以在IDEA或者Navicat上先连接这个数据库，然后我们再运行SQL文件.从而将数据库的数据导入到这个新建的远程数据库中去。<br><img src="/../images/csuoj-dev/%E6%88%AA%E5%9B%BE6.png" alt="mysql"></p>
+<p>导入完之后就是这样子咯<br><img src="/../images/csuoj-dev/%E6%88%AA%E5%9B%BE7.png" alt="导入"></p>
+<h3 id="4-2-安装Redis依赖"><a href="#4-2-安装Redis依赖" class="headerlink" title="4.2 安装Redis依赖"></a>4.2 安装Redis依赖</h3><p>我们可以先尝试访问一下Redis，发现是不可以访问的，这是因为我们的Redis没有设置访问权限<br><img src="/../images/csuoj-dev/%E6%88%AA%E5%9B%BE8.png" alt="访问"></p>
+<p>我们要先在宝塔里面设置一下访问权限的问题。在Redis的设置，性能设置界面，我们先把我们的bind设置为0.0.0.0，让外网可以访问我们的redis，然后设置一下密码。这样我们的本机就可以访问redis了，（后续得修改，不能用0.0.0.0，不然会被入侵）。</p>
+<p>如果还不行的话，可能是防火墙没有打开。</p>
+<h3 id="4-3-Java环境的安装"><a href="#4-3-Java环境的安装" class="headerlink" title="4.3 Java环境的安装"></a>4.3 Java环境的安装</h3><p>我们在宝塔-&gt;网站-&gt;Java项目中添加Java环境，我们选择添加jdk1.8.0<br><img src="/../images/csuoj-dev/%E6%88%AA%E5%9B%BE9.png" alt="java"></p>
+<p>然后我们在命令行中安装maven，输入以下命令<br><img src="/../images/csuoj-dev/%E6%88%AA%E5%9B%BE10.png" alt="maven"></p>
+<h2 id="5-部署代码沙箱到服务器上去"><a href="#5-部署代码沙箱到服务器上去" class="headerlink" title="5.部署代码沙箱到服务器上去"></a>5.部署代码沙箱到服务器上去</h2><p>首先我们在IDEA 的maven中执行package命令，将代码沙箱打包成一个jar包。<br><img src="/../images/csuoj-dev/%E6%88%AA%E5%9B%BE11.png" alt="jar"></p>
+<p>打包完成之后我们可以现在本地测试一下，用java -jar 命令运行以下jar包看看可不可以。<br>如果没有问题的话，我们再将jar包上传到宝塔面板中去：<br>点击文件，然后在www&#x2F;wwwroot目录下，我们将jar包拖上去就ok了。</p>
+<p>上传完之后，我们就可以建立一个新的java项目了：<br>点击网站，然后添加Java项目，选择jar包，改端口为8090，然后设置开机自启，点击提交，就ok啦！<br>我们可以通过该页面的设置-&gt;项目日志，来查看项目的日志。由此判断项目是否处于运行状态中。</p>
+<p>怎么判断能不能用呢？我们可以在我们的后端中，调用一下服务器ip+8090的端口，看看项目能否正常运行，可以的话，说明代码沙箱是部署成功的！<br><img src="/../images/csuoj-dev/%E6%88%AA%E5%9B%BE12.png" alt="判断"></p>
+<p>提示一下，如果发现执行不了的话，可能是没有开放8090端口噢！<br><img src="/../images/csuoj-dev/%E6%88%AA%E5%9B%BE13.png" alt="判断"><br>通过就是ok的啦！</p>
+<h2 id="6-部署前端"><a href="#6-部署前端" class="headerlink" title="6.部署前端"></a>6.部署前端</h2><ol>
+<li>修改跨域ip为服务器ip；</li>
+<li>打包前端文件，命令是yarn build，如果遇到问题，可以自行百度一下，一般不会有问题；</li>
+</ol>
+<p>我这里出现的问题是编译报错JavaScript heap out of memory，node内存溢出，Exit status 134。这个的话其实是js文件太大了，导致不能构建出来项目，解决方案就是 打开cmd窗口，然后输入 这条命令 即可。<br><code>setx NODE_OPTIONS --max_old_space_size=4096</code></p>
+<ol start="3">
+<li>然后我们进入宝塔面板，点击网站，点创建php项目（其实就是前端），然后我们将dist文件导入进去，设置好域名（没有域名的话可以先用ip代替）。这样前端就部署完成了。</li>
+<li>这里可能有个坑，就是输入网址时nginx可能报404的错误，这是因为框架的路由，实际上是没有部署当前这个网址到nginx上的，所以我们得用一条命令转发到index.html上，具体命令我们可以查看这个网址：<a target="_blank" rel="noopener" href="https://router.vuejs.org/guide/essentials/history-mode.html#nginx">https://router.vuejs.org/guide/essentials/history-mode.html#nginx</a></li>
+</ol>
+<h2 id="7-部署后端"><a href="#7-部署后端" class="headerlink" title="7.部署后端"></a>7.部署后端</h2><ol>
+<li><p>修改application.properties文件中的MySQL的url、用户名、密码；</p>
+</li>
+<li><p>修改redis的url、密码；</p>
+</li>
+<li><p>执行mvn的package命令，将项目打包成一个jar包；</p>
+</li>
+<li><p>可以先在本地上测试一下jar包，我这里出现了一个bug：<br><img src="/../images/csuoj-dev/%E6%88%AA%E5%9B%BE14.png" alt="bug"><br>排查之后发现，应该是文心一言的java版本，不能用1.8，得用17及以上的。</p>
+</li>
+<li><p>上传jar包到服务器上；（跟代码沙箱那一步是一样的）</p>
+</li>
+<li><p>这里我遇到了两个坑，我之前在防火墙那里设置了只能我的本机访问Redis和MySQL，然后部署上去我发现后端也访问不了，所以在防火墙那里还要加入服务器的ip允许策略。</p>
+</li>
+<li><p>在前端nginx那里加入以下命令，将api网址下的都转发到8121端口下。</p>
+<p> location &#x2F;api {<br> proxy_pass <a target="_blank" rel="noopener" href="http://127.0.0.1:8121/">http://127.0.0.1:8121</a>;<br> proxy_set_header Host $proxy_host;<br> proxy_set_header X-Real-IP $remote_addr;<br> proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;<br> proxy_buffering off;<br> proxy_set_header Connection “”;<br> }</p>
+</li>
+</ol>
+<h2 id="8-前后端联调测试"><a href="#8-前后端联调测试" class="headerlink" title="8.前后端联调测试"></a>8.前后端联调测试</h2><p>测试一下基本流程，没有问题，舒服了，家人们~<br><img src="/../images/csuoj-dev/%E6%88%AA%E5%9B%BE15.png" alt="完全体"><br>后续的工作：可以把域名加进去，之前买了个域名，现在可以派上用场了。</p>
+<p>绑定域名的话我打算再出一篇文章，内容包括：如何购买域名，如何在宝塔上绑定域名，如何在DNS服务商处解析DNS域名。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7266374030147076157">https://juejin.cn/post/7266374030147076157</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Jacksun_huang/article/details/90054923">https://blog.csdn.net/Jacksun_huang/article/details/90054923</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://cds007.github.io">cds007</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://cds007.github.io/2024/03/04/CSU-OJ%E9%83%A8%E7%BD%B2%E6%95%99%E7%A8%8B/">https://cds007.github.io/2024/03/04/CSU-OJ%E9%83%A8%E7%BD%B2%E6%95%99%E7%A8%8B/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://cds007.github.io" target="_blank">CDS007的个人博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E9%83%A8%E7%BD%B2-%E5%90%8E%E7%AB%AF-OJ%E7%B3%BB%E7%BB%9F/">部署 后端 OJ系统</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2023/08/09/hello-world/" title="Hello World"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Hello World</div></div></a></div></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">cds007</div><div class="author-info__description">Talk is cheap. Show me the code</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">2</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/cds007"><i></i><span>🛴前往小家...</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/cds007" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:2205175277@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content"><center>邮箱联系：<br><b><font color="#5ea6e5">2205175277@qq.com</font></b><br></center></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%B4%AD%E4%B9%B0"><span class="toc-number">1.</span> <span class="toc-text">1.服务器购买</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">2.</span> <span class="toc-text">2.服务器初始化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E9%87%8D%E8%A3%85%E7%B3%BB%E7%BB%9F"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 重装系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E8%A3%85%E9%85%8D%E7%8E%AF%E5%A2%83"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 装配环境</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E9%83%A8%E7%BD%B2%E8%A7%84%E5%88%92"><span class="toc-number">3.</span> <span class="toc-text">3.部署规划</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96"><span class="toc-number">4.</span> <span class="toc-text">4.安装依赖</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E5%AE%89%E8%A3%85MySQL%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">4.1.</span> <span class="toc-text">4.1 安装MySQL数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E5%AE%89%E8%A3%85Redis%E4%BE%9D%E8%B5%96"><span class="toc-number">4.2.</span> <span class="toc-text">4.2 安装Redis依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-Java%E7%8E%AF%E5%A2%83%E7%9A%84%E5%AE%89%E8%A3%85"><span class="toc-number">4.3.</span> <span class="toc-text">4.3 Java环境的安装</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E9%83%A8%E7%BD%B2%E4%BB%A3%E7%A0%81%E6%B2%99%E7%AE%B1%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E5%8E%BB"><span class="toc-number">5.</span> <span class="toc-text">5.部署代码沙箱到服务器上去</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E9%83%A8%E7%BD%B2%E5%89%8D%E7%AB%AF"><span class="toc-number">6.</span> <span class="toc-text">6.部署前端</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E9%83%A8%E7%BD%B2%E5%90%8E%E7%AB%AF"><span class="toc-number">7.</span> <span class="toc-text">7.部署后端</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E5%89%8D%E5%90%8E%E7%AB%AF%E8%81%94%E8%B0%83%E6%B5%8B%E8%AF%95"><span class="toc-number">8.</span> <span class="toc-text">8.前后端联调测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">9.</span> <span class="toc-text">参考</span></a></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'igxllW37a1yjiS2jRyPFwKGc-9Nh9j0Va',
+      appKey: '1Bx6zHklPkfSgXiSfC3eHnIB',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: {"tv_doge":"6ea59c827c414b4a2955fe79e0f6fd3dcd515e24.png","tv_亲亲":"a8111ad55953ef5e3be3327ef94eb4a39d535d06.png","tv_偷笑":"bb690d4107620f1c15cff29509db529a73aee261.png","tv_再见":"180129b8ea851044ce71caf55cc8ce44bd4a4fc8.png","tv_冷漠":"b9cbc755c2b3ee43be07ca13de84e5b699a3f101.png","tv_发怒":"34ba3cd204d5b05fec70ce08fa9fa0dd612409ff.png","tv_发财":"34db290afd2963723c6eb3c4560667db7253a21a.png","tv_可爱":"9e55fd9b500ac4b96613539f1ce2f9499e314ed9.png","tv_吐血":"09dd16a7aa59b77baa1155d47484409624470c77.png","tv_呆":"fe1179ebaa191569b0d31cecafe7a2cd1c951c9d.png","tv_呕吐":"9f996894a39e282ccf5e66856af49483f81870f3.png","tv_困":"241ee304e44c0af029adceb294399391e4737ef2.png","tv_坏笑":"1f0b87f731a671079842116e0991c91c2c88645a.png","tv_大佬":"093c1e2c490161aca397afc45573c877cdead616.png","tv_大哭":"23269aeb35f99daee28dda129676f6e9ea87934f.png","tv_委屈":"d04dba7b5465779e9755d2ab6f0a897b9b33bb77.png","tv_害羞":"a37683fb5642fa3ddfc7f4e5525fd13e42a2bdb1.png","tv_尴尬":"7cfa62dafc59798a3d3fb262d421eeeff166cfa4.png","tv_微笑":"70dc5c7b56f93eb61bddba11e28fb1d18fddcd4c.png","tv_思考":"90cf159733e558137ed20aa04d09964436f618a1.png","tv_惊吓":"0d15c7e2ee58e935adc6a7193ee042388adc22af.png"},
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !true) {
+  if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><div class="aplayer no-destroy" data-id="1708664797" data-server="tencent" data-type="playlist"   data-order="list" data-fixed="true" data-preload="auto" data-autoplay="false" data-mutex="true" ></div><script defer src="/js/light.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-show-text.min.js" data-mobile="false" data-text="富强,民主,文明,和谐,自由,平等,公正,法治,爱国,敬业,诚信,友善" data-fontsize="15px" data-random="true" async="async"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div><!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_footer_beautify_injector_config(){
+    var parent_div_git = document.getElementById('footer-wrap');
+    var item_html = '<div id="workboard"></div><p id="ghbdages"><a class="github-badge" target="_blank" href="https://beian.miit.gov.cn/#/Integrated/index" style="margin-inline:5px" data-title="本站已在xxxxxx自己修改 进行备案" title=""><img src="https://img.shields.io/badge/域名信息备案管理系统-e1d492?style=flat&amp;logo=data:image/png;base64,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" alt=""/></a><a class="github-badge" target="_blank" href="https://github.com/cds007" style="margin-inline:5px" data-title="本站项目由Github托管" title=""><img src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&amp;logo=GitHub" alt=""/></a><a class="github-badge" target="_blank" href="https://blog.csdn.net/Cds008" style="margin-inline:5px" data-title="本站使用为静态资源提供CDN加速" title=""><img src="https://img.shields.io/badge/CSDN-CSDN博客-orange?style=flat&amp;logo=又拍云" alt=""/></a></p>';
+    console.log('已挂载butterfly_footer_beautify')
+    parent_div_git.insertAdjacentHTML("beforeend",item_html)
+    }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_footer_beautify_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_footer_beautify_injector_config();
+  }
+  </script><script async src="https://unpkg.zhimg.com/hexo-butterfly-footer-beautify@1.0.0/lib/runtime.min.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/"});</script></body></html>
